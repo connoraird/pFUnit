@@ -5,6 +5,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.15.0] - 2025-11-24
+
+### Changed
+
+- Workaround for complex flang use case.
+  - Modified an internal interface so that `load_tests` is now a subroutine. 
+  - Also added a subroutine version of `TestSuite::filter()` (called `filter_sub()`
+- Remove `gfortran-12` from macos CI tests
+
 ### Fixed
 
 - Undo accidental case change in `add_pfunit_test` (introduced in #509) which led to empty `_TEST_SUITES`
