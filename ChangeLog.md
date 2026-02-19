@@ -17,6 +17,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Minor cleanup to CI
+- Turned off NVHPC CI test as it seems the image is too large for Github Actions.  Will investigate further and re-enable when possible.
+
+### Fixed
+
+- Fix `add_pfunit_ctest` to properly track test file dependencies (issue #380)
+  - Adding new `.pf` files to `TEST_SOURCES` now triggers automatic rebuild without `make clean`
+  - Test suite registry (`.inc` file) generation moved from configure-time to build-time
+  - Added build-time dependency tracking between `.pf` files and generated registry
+  - Driver recompilation now triggered automatically when registry changes
+  - New helper script: `include/generate_test_suite_inc.cmake`
 
 ## [4.15.0] - 2025-11-24
 
