@@ -5,6 +5,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.16.0] - 2026-02-23
+
 ### Added
 
 - Advanced test filtering with regex and glob patterns (issue #523)
@@ -16,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Update submodule (fArgParse v1.11.0)
 - Minor cleanup to CI
 - Turned off NVHPC CI test as it seems the image is too large for Github Actions.  Will investigate further and re-enable when possible.
 - Removed some unneeded debugging prints in `pFUnitParser.py`
