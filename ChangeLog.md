@@ -13,6 +13,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Fisher-Yates shuffle algorithm implemented in `TestSuite` module
   - Both unit tests and integration tests included
 
+### Fixed
+
+- Fix multi-line macro continuation to preserve whitespace (issue #532)
+  - Assertion macros (e.g., `@assertEqual`) now properly support Fortran `&` line continuation
+  - Whitespace before trailing `&` and after leading `&` is preserved exactly as written
+  - Split monolithic test file into focused test modules for better maintainability
+
+## [4.16.0] - 2026-02-23
+
+### Added
+
+- Advanced test filtering with regex and glob patterns (issue #523)
+  - `--shuffle` flag to randomize test execution order within each suite
+  - `--seed=N` option to specify random seed for reproducibility (0 uses time-based seed, implies --shuffle)
+  - Fisher-Yates shuffle algorithm implemented in `TestSuite` module
+  - Both unit tests and integration tests included
+
 ## [4.16.0] - 2026-02-23
 
 ### Added
