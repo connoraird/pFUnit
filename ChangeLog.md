@@ -12,13 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `--seed=N` option to specify random seed for reproducibility (0 uses time-based seed, implies --shuffle)
   - Fisher-Yates shuffle algorithm implemented in `TestSuite` module
   - Both unit tests and integration tests included
-
-### Fixed
-
-- Fix multi-line macro continuation to preserve whitespace (issue #532)
-  - Assertion macros (e.g., `@assertEqual`) now properly support Fortran `&` line continuation
-  - Whitespace before trailing `&` and after leading `&` is preserved exactly as written
-  - Split monolithic test file into focused test modules for better maintainability
+- Multi-line continuation support for pFUnit macros (issue #532)
+  - Assertion macros (e.g., `@assertEqual`) now support Fortran `&` line continuation
+  - Whitespace is preserved exactly as written when joining continued lines
 
 ## [4.16.0] - 2026-02-23
 
