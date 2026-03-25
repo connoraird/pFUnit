@@ -5,6 +5,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Updated license to Apache-2.0
+  - Renamed and retained old NOSA license as `LICENSE-NOSA` for historical reference
+
 ### Added
 
 - Test shuffling support to detect hidden test dependencies (issue #530)
