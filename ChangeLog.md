@@ -5,6 +5,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.17.0] - 2026-04-08
+
+### Changed
+
+- Updated license to Apache-2.0
+  - Renamed and retained old NOSA license as `LICENSE-NOSA` for historical reference
+
+### Added
+
+- Test shuffling support to detect hidden test dependencies (issue #530)
+  - `--shuffle` flag to randomize test execution order within each suite
+  - `--seed=N` option to specify random seed for reproducibility (0 uses time-based seed, implies --shuffle)
+  - Fisher-Yates shuffle algorithm implemented in `TestSuite` module
+  - Both unit tests and integration tests included
+- Multi-line continuation support for pFUnit macros (issue #532)
+  - Assertion macros (e.g., `@assertEqual`) now support Fortran `&` line continuation
+  - Whitespace is preserved exactly as written when joining continued lines
+- Fix documentation generation with Doxygen.
+  - Split single documentation file into pages for easier management.
+  - Add documentation missing for assertions.
+  - Added a failure message to the assertEqual test.
+
 ## [4.16.0] - 2026-02-23
 
 ### Added
