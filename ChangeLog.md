@@ -5,6 +5,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Ordinary Fortran `&` continuation lines are now passed through unchanged (issue #537)
+  - Previously, the preprocessor incorrectly joined all `&`-continued lines, breaking
+    multi-line array constructors and embedding Fortran comments mid-statement
+  - Continuation joining now only applies to pFUnit `@`-directive lines
+
 ## [4.17.0] - 2026-04-08
 
 ### Changed
