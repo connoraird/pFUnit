@@ -5,6 +5,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.18.0] - 2026-04-24
+
+### Changed
+
+- Updated CI workflow to use OpenMPI 5.0.10 (previously 5.0.2) on all platforms
+- Simplified CI MPI cache key to be per-OS only (previously per-OS and per-compiler), reducing redundant cache entries
+- Added `concurrency` group to CI workflow to cancel in-progress runs when a new commit is pushed to the same PR
+- Removed `macos-14` (Sonoma) from the CI runner matrix; it is deprecated upstream and two OS releases behind
+- Added `macos-26` (macOS Tahoe) to the GNU CI runner matrix
+- Updated `actions/upload-artifact` from v6 to v7 in `main.yml`
+- Updated `actions/checkout` from v2 to v6 in `release-tarball.yml`
+- Updated `README.md`: removed stale `pFUnit 4.0` title, updated LICENSE description to Apache-2.0 (as of v4.17.0), fixed `ChangeLog` reference to `ChangeLog.md`, removed non-existent `VERSION` file entry, removed Python 2.7 references
+
+### Added
+
+- Extended `near()` and `relatively_near()` Hamcrest matchers to support `REAL64` and array ranks 1–4 (issue #542)
+  - New typed matcher types: `IsNear_32`, `IsNear_64`, `IsRelativelyNear_32`, `IsRelativelyNear_64`
+  - Tolerance precision matches the expected value's precision
+  - For arrays, the actual value may be of higher precision than expected (e.g. `real(REAL64)` actual with default-real expected and tolerance), as a convenience to the test writer
+  - For scalars, both precision directions are accepted to preserve backward compatibility
+- Extended `equal_to()` Hamcrest matcher and `assert_that()` to support rank-4 arrays
+
+### Fixed
+- `@assertExceptionRaised` no longer short-circuits after catching one exception (issue #543)
+  - Previously, the generated code emitted `if (anyExceptions()) return` after every
+    `@assertExceptionRaised`, preventing successive calls from catching additional exceptions
+  - Multiple exceptions can now each be caught with successive `@assertExceptionRaised` directives
+- Allow for larger integer value comparisons greater than 20 digits (issue #540)
+  - Previously, a large but valid `_int64` based integer would fail to be written
+    to a string because of being hard coded to only be allocated 20 characters
+  - Now supports up to 45 digits including potential `-` sign matching
+    supported real value digit count
+
 ## [4.17.1] - 2026-04-09
 
 ### Fixed
