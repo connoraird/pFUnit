@@ -3,7 +3,18 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [4.18.1] - 2026-05-05
+
+### Fixed
+
+- Workaround GCC 16.1.0 regression in `TestResult%getName()` (issue #548)
+  - GCC 16.1.0 incorrectly copies only padding spaces (or garbage for
+    polymorphic dispatch) when assigning a `character(len=N)` component to a
+    `character(:), allocatable` function result variable
+  - Fixed by using `trim(this%name)` in the assignment, which avoids the
+    compiler bug and is also semantically correct
+  - A standalone reproducer and GCC Bugzilla report have been filed for the
+    upstream compiler bug
 
 ## [4.18.0] - 2026-04-24
 
